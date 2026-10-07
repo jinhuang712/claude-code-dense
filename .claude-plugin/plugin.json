@@ -6,6 +6,8 @@
     "name": "Jin Huang",
     "url": "https://github.com/jinhuang712"
   },
+  "homepage": "https://github.com/jinhuang712/claude-code-dense",
+  "repository": "https://github.com/jinhuang712/claude-code-dense",
   "license": "MIT",
   "keywords": ["transcript", "fold", "collapse", "tool-calls", "claude-code"],
   "types": "./types/index.d.ts",

@@ -22,7 +22,15 @@ tool calls and the text between them fold into one line above the final answer:
 
 ## Install
 
-From a local checkout:
+At the prompt of a Claude Code terminal session:
+
+```
+/plugin install dense --marketplace jinhuang712/claude-code-dense
+```
+
+Answer `y` to add the marketplace, then pick a scope (user is the first one offered).
+
+From a local checkout instead:
 
 ```
 claude plugin marketplace add ~/dev/claude-code/claude-code-dense
