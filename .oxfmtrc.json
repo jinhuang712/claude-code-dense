@@ -3,5 +3,6 @@
   "singleQuote": true,
   "arrowParens": "avoid",
   "printWidth": 110,
-  "ignorePatterns": []
+  // Markdown is left as written: oxfmt trims the spaces padding inline code (` ▸ expand `).
+  "ignorePatterns": ["**/*.md"]
 }

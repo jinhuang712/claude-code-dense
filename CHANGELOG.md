@@ -7,7 +7,6 @@ All notable changes to this project are documented here. Format follows [Keep a 
 ## [0.1.1] - 2026-10-07
 
 ### Changed
-
 - The summary line names calls by what they did: Grep, Glob, ToolSearch and WebSearch count as searches, WebFetch as fetches (`3 searches · 2 fetches`, was `1 ToolSearch · 9 web`).
 
 ### Fixed
