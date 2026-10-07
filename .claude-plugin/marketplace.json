@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "A Claude Code plugin that folds everything per turn.",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "plugins": [
     {

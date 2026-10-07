@@ -14,7 +14,7 @@ tool calls and the text between them fold into one line above the final answer:
 
 ## Requirements
 
-- Claude Code with mods (plugins of function hooks). Tested on 2.1.291.
+- Claude Code with mods (plugins of function hooks). Tested on 2.1.292.
 - Mods are behind a rollout switch Anthropic controls. While it is off, the plugin installs
   but does not load.
 - Tested in the fullscreen view. In the normal view, rows already printed to the terminal's

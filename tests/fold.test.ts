@@ -60,6 +60,27 @@ test('folds a finished turn into one summary line, the rest drawn empty', async 
   )
 })
 
+test('searches of every kind count together, fetches apart', async ($, on) => {
+  engineBeneath(on)
+  await $.turn.start({ text: 'go', turnId: 't10' })
+  await $.tool.call({ tool: 'ToolSearch', query: 'select:Read', max_results: 1, tool_use_id: 'a' } as never)
+  await $.tool.call({ tool: 'WebSearch', query: 'q', mode: 'standard', tool_use_id: 'b' } as never)
+  await $.tool.call({ tool: 'Grep', pattern: 'x', tool_use_id: 'c' } as never)
+  await $.tool.call({ tool: 'WebFetch', url: 'https://example.com', prompt: 'p', tool_use_id: 'd' } as never)
+  await $.tool.call({ tool: 'WebFetch', url: 'https://example.org', prompt: 'p', tool_use_id: 'e' } as never)
+  await $.turn.complete(complete('t10'))
+
+  const row = await $.ui.mount({
+    plugin: 'dense',
+    surface: 'terminal',
+    component: 'ToolUse',
+    requestId: 'a',
+    props: toolUseProps('ToolSearch', 'a'),
+  })
+  expect(await row.find({ text: /3 searches · 2 fetches/ })).toBeDefined()
+  expect(await row.find({ text: /ToolSearch|web/ })).toBeUndefined()
+})
+
 test('expand shows the engine rows again', async ($, on) => {
   engineBeneath(on)
   await $.turn.start({ text: 'go', turnId: 't2' })

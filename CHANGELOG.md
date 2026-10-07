@@ -4,6 +4,12 @@ All notable changes to this project are documented here. Format follows [Keep a 
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-07
+
+### Changed
+
+- The summary line names calls by what they did: Grep, Glob, ToolSearch and WebSearch count as searches, WebFetch as fetches (`3 searches · 2 fetches`, was `1 ToolSearch · 9 web`).
+
 ### Fixed
 - A folded turn no longer leaves its calls' result lines showing (`⎿ Added 9 lines, removed 9 lines` and its diff, `⎿ Did 1 search in 7s`, `⎿ Received 25.5KB`): the result row folds with its call.
 

@@ -31,17 +31,18 @@ const PLURAL: Record<string, [string, string]> = {
   edit: ['edit', 'edits'],
   read: ['read', 'reads'],
   search: ['search', 'searches'],
+  fetch: ['fetch', 'fetches'],
   agent: ['agent', 'agents'],
-  web: ['web', 'web'],
 }
 
+// Named by what a call did: code, tool and web searches are all searches.
 function category(tool: string): string {
   if (tool === 'Bash' || tool === 'PowerShell') return 'bash'
   if (['Edit', 'Write', 'NotebookEdit', 'MultiEdit'].includes(tool)) return 'edit'
   if (tool === 'Read') return 'read'
-  if (['Grep', 'Glob', 'LS'].includes(tool)) return 'search'
+  if (['Grep', 'Glob', 'LS', 'ToolSearch', 'WebSearch'].includes(tool)) return 'search'
+  if (tool === 'WebFetch') return 'fetch'
   if (tool === 'Agent' || tool === 'Task') return 'agent'
-  if (tool === 'WebFetch' || tool === 'WebSearch') return 'web'
   if (tool.startsWith('mcp__')) {
     const server = (tool.split('__')[1] ?? 'mcp').replace(/^claude_ai_/, '')
     return `mcp(${server})`
