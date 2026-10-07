@@ -52,6 +52,8 @@ Set them with `/plugin configure dense@claude-code-dense` or `claude plugin conf
 ## Limits
 
 - Thinking blocks have no render hook, so they can't be folded.
+- Neither can rows Claude Code adds on its own, like the files it re-attaches after a
+  compaction (`⎿ Read X (N lines)`, `⎿ Referenced file X`).
 - Turns from before a `--resume` aren't folded: the plugin only knows the turns it watched.
 - Folded rows stay folded in the ctrl+o transcript (tool rows don't say which view draws
   them); use ` ▸ expand `.
