@@ -82,6 +82,50 @@ test('expand shows the engine rows again', async ($, on) => {
   expect(await row.find({ text: /engine row/ })).toBeUndefined()
 })
 
+test("a call's result row folds with its call and shows on expand", async ($, on) => {
+  engineBeneath(on)
+  await $.turn.start({ text: 'go', turnId: 't9' })
+  await $.tool.call({ tool: 'Bash', command: 'ls', tool_use_id: 'a' } as never)
+  await $.tool.call({ tool: 'Write', file_path: 'x', content: 'b', tool_use_id: 'b' } as never)
+  await $.turn.complete(complete('t9'))
+
+  const result = (tool: string, tool_use_id: string) =>
+    $.ui.mount({
+      plugin: 'dense',
+      surface: 'terminal',
+      component: 'ToolResult',
+      requestId: tool_use_id,
+      props: { tool_use_id, tool, output: {}, isErrored: false },
+    })
+  const summaryResult = await result('Bash', 'a')
+  const hiddenResult = await result('Write', 'b')
+  expect(await summaryResult.find({ text: /engine row/ })).toBeUndefined()
+  expect(await hiddenResult.find({ text: /engine row/ })).toBeUndefined()
+
+  const row = await $.ui.mount({
+    plugin: 'dense',
+    surface: 'terminal',
+    component: 'ToolUse',
+    requestId: 'a',
+    props: toolUseProps('Bash', 'a'),
+  })
+  await row.press({ key: 'fold-t9' })
+  expect(await summaryResult.find({ text: /engine row/ })).toBeDefined()
+  expect(await hiddenResult.find({ text: /engine row/ })).toBeDefined()
+})
+
+test('a result row outside a folded turn draws as the engine does', async ($, on) => {
+  engineBeneath(on)
+  const result = await $.ui.mount({
+    plugin: 'dense',
+    surface: 'terminal',
+    component: 'ToolResult',
+    requestId: 'z',
+    props: { tool_use_id: 'z', tool: 'Bash', output: {}, isErrored: false },
+  })
+  expect(await result.find({ text: /engine row/ })).toBeDefined()
+})
+
 test('a group folds even when one of its calls never reached tool.call', async ($, on) => {
   engineBeneath(on)
   await $.turn.start({ text: 'go', turnId: 't4' })

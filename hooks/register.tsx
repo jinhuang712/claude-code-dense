@@ -184,6 +184,15 @@ export const register: Register = (on, options) => {
     return drawFolded($, e, row, () => next(e))
   })
 
+  // A standalone call's result (`⎿ Added 9 lines`) is a row of its own, the
+  // tool_result's user message, so hiding the call's row leaves it drawn. It
+  // folds with its call, the summary row's included.
+  on('ui.render', { component: 'ToolResult' }, async ($, e, next) => {
+    const { value: row = null } = await $.state.get({ ...rowRef, id: rowKey(e.requestId) })
+    if (row === null) return next(e)
+    return drawFolded($, e, { role: 'hidden', turnId: row.turnId }, () => next(e))
+  })
+
   on('ui.render', { component: 'ToolGroup' }, async ($, e, next) => {
     const ids = e.props.calls.flatMap(call => (call.tool_use_id === undefined ? [] : [call.tool_use_id]))
     const reads = await Promise.all(ids.map(id => $.state.get({ ...rowRef, id: rowKey(id) })))

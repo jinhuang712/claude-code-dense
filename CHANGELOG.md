@@ -4,6 +4,9 @@ All notable changes to this project are documented here. Format follows [Keep a 
 
 ## [Unreleased]
 
+### Fixed
+- A folded turn no longer leaves its calls' result lines showing (`⎿ Added 9 lines, removed 9 lines` and its diff, `⎿ Did 1 search in 7s`, `⎿ Received 25.5KB`): the result row folds with its call.
+
 ## [0.1.0] - 2026-10-07
 
 ### Added
