@@ -1,0 +1,19 @@
+{
+  "name": "claude-code-dense",
+  "owner": {
+    "name": "Jin Huang"
+  },
+  "metadata": {
+    "description": "Fold each finished Claude Code turn into one summary line",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "dense",
+      "source": "./",
+      "description": "Live steps while a turn runs, one summary line after",
+      "category": "productivity",
+      "tags": ["transcript", "fold", "collapse", "tool-calls"]
+    }
+  ]
+}

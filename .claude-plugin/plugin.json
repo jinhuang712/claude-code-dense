@@ -1,0 +1,26 @@
+{
+  "name": "dense",
+  "description": "Every step shows while a turn runs; once it ends, its tool calls and in-between text fold into one line (3 bash · 2 edits · 1 read)",
+  "version": "0.1.0",
+  "author": {
+    "name": "Jin Huang",
+    "url": "https://github.com/jinhuang712"
+  },
+  "license": "MIT",
+  "keywords": ["transcript", "fold", "collapse", "tool-calls", "claude-code"],
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "foldFailedTurns": {
+      "type": "boolean",
+      "title": "Fold turns with a failed tool call",
+      "description": "On: such a turn folds too, its summary line saying how many calls failed. Off: it stays expanded.",
+      "default": true
+    },
+    "hideNotes": {
+      "type": "boolean",
+      "title": "Hide the text between tool calls",
+      "description": "On: only the final answer of a folded turn stays. Off: only tool calls fold.",
+      "default": true
+    }
+  }
+}
