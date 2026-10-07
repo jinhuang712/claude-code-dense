@@ -4,14 +4,14 @@
     "name": "Jin Huang"
   },
   "metadata": {
-    "description": "Fold each finished Claude Code turn into one summary line",
+    "description": "A Claude Code plugin that folds everything per turn.",
     "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "dense",
       "source": "./",
-      "description": "Live steps while a turn runs, one summary line after",
+      "description": "A Claude Code plugin that folds everything per turn.",
       "category": "productivity",
       "tags": ["transcript", "fold", "collapse", "tool-calls"]
     }

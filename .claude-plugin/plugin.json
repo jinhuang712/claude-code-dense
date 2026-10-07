@@ -1,6 +1,6 @@
 {
   "name": "dense",
-  "description": "Every step shows while a turn runs; once it ends, its tool calls and in-between text fold into one line (3 bash · 2 edits · 1 read)",
+  "description": "A Claude Code plugin that folds everything per turn.",
   "version": "0.1.0",
   "author": {
     "name": "Jin Huang",

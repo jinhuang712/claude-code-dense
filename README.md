@@ -1,6 +1,6 @@
 # claude-code-dense
 
-**A dense Claude Code transcript.** While a turn runs you see every step. Once it ends, its
+**A Claude Code plugin that folds everything per turn.** While a turn runs you see every step. Once it ends, its
 tool calls and the text between them fold into one line above the final answer:
 
 ```text
